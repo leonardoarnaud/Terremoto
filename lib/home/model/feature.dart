@@ -1,11 +1,8 @@
-import 'package:intl/intl.dart';
-import 'package:terramoto/Constants.dart';
-
 class Feature {
   final String id;
   final double mag;
   final String place;
-  final String time;
+  final int time;
 
   Feature({
     this.id,
@@ -19,13 +16,7 @@ class Feature {
       id: json['properties']['id'],
       mag: double.parse(json['properties']['mag'].toString()),
       place: json['properties']['place'],
-      time: DateFormat(
-          Constants.time_date_format
-      ).format(
-          DateTime.fromMillisecondsSinceEpoch(
-            json['properties']['time']
-          )
-      ),
+      time: json['properties']['time']
     );
   }
 }

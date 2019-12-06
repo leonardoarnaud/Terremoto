@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:terramoto/home/model/earthquake.dart';
 import 'package:terramoto/home/model/feature.dart';
+
+import '../../Constants.dart';
 
 class ItemEarthquake extends StatelessWidget {
 
@@ -15,6 +18,7 @@ class ItemEarthquake extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child: Padding(
         padding: const EdgeInsets.all(8),
@@ -29,8 +33,14 @@ class ItemEarthquake extends StatelessWidget {
             ),
           ),
           title: Text(
-              earthQuakeFeature.time.toString(),
-              style: TextStyle(
+            DateFormat(
+                Constants.time_date_format
+            ).format(
+                DateTime.fromMillisecondsSinceEpoch(
+                    earthQuakeFeature.time
+                )
+            ),
+            style: TextStyle(
                   color: Colors.amber
               ),
           ),
