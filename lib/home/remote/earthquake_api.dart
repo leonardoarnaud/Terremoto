@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class EarthquakeApi{
 
   Future<Earthquake> fetchEarthquake() async {
-    final response = await http.get(Constants.API_URL);
+    final response = await http.get(Constants.api_url);
 
     if (response.statusCode == 200) {
       return Earthquake.fromJson(

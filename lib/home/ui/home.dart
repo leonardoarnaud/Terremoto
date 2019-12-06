@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:terramoto/home/controller/home_controller.dart';
+import 'package:terramoto/home/home_controller.dart';
 import 'package:terramoto/home/model/earthquake.dart';
 import 'package:terramoto/home/ui/item_heartquake.dart';
 
@@ -33,7 +33,7 @@ class _Home extends State<Home> {
       body: Center(
         child: FutureBuilder<Earthquake>(
           future: homeController.earthQuakes,
-          builder: (context, snapshot) {
+          builder: (_, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                   padding: const EdgeInsets.all(8),
