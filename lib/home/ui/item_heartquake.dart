@@ -5,11 +5,13 @@ import 'package:terramoto/home/model/feature.dart';
 
 class ItemEarthquake extends StatelessWidget {
 
-  Feature earthQuakeFeature;
+  final Feature earthQuakeFeature;
+  final GestureTapCallback onTap;
 
-  ItemEarthquake({earthquakeFeature: Feature}){
-    this.earthQuakeFeature = earthquakeFeature;
-  }
+  const ItemEarthquake({Key key,
+    this.earthQuakeFeature,
+    this.onTap
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class ItemEarthquake extends StatelessWidget {
               color: Colors.grey
             ),
           ),
+          onTap: onTap,
         )
       )
     );

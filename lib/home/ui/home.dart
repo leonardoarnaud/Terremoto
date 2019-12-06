@@ -3,6 +3,8 @@ import 'package:terramoto/home/home_controller.dart';
 import 'package:terramoto/home/model/earthquake.dart';
 import 'package:terramoto/home/ui/item_heartquake.dart';
 
+import '../../Strings.dart';
+
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
 
@@ -38,9 +40,28 @@ class _Home extends State<Home> {
               return ListView.builder(
                   padding: const EdgeInsets.all(8),
                   itemCount: snapshot.data.features.length,
+
                   itemBuilder: (BuildContext context, int index){
+
+                    final feature = snapshot.data.features[index];
+
                     return ItemEarthquake(
-                        earthquakeFeature: snapshot.data.features[index],
+                      earthQuakeFeature: feature,
+                      onTap: () => showDialog(
+                          context: context,
+                          builder: (context){
+                            return AlertDialog(
+                              title: Text(Strings.app_title),
+                              content: Text("${feature.mag} - ${feature.place}"),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text(Strings.ok),
+                                  onPressed: () => Navigator.of(context).pop(),
+                                )
+                              ],
+                            );
+                          }
+                      ),
                     );
                   }
               );
@@ -52,6 +73,10 @@ class _Home extends State<Home> {
         ),
       ),
     );
+  }
+
+  _showDialog() {
+
   }
 
 
